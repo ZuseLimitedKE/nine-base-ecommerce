@@ -47,7 +47,7 @@ const ThankYouPage = ({ params }: { params: { slug: string } }) => {
 
   const handlePayment = async () => {
     if (accountAddress) {
-      console.log('Wallet connected:', accountAddress)
+      console.log('Wallet connected:', accountAddress);
     } else {
       toast({
         title: 'Wallet not connected',
@@ -63,7 +63,7 @@ const ThankYouPage = ({ params }: { params: { slug: string } }) => {
     try {
       // Initialize the SDK
       const sdk = new NineSdk({
-        baseUrl: 'https://nine-ad9w.onrender.com', 
+        baseUrl: 'https://nine-base.onrender.com', 
       })
 
       // Create the payment request
