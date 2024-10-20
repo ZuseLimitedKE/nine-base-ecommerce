@@ -18,10 +18,15 @@ const iPhoneDetails = {
 };
 
 const getWalletAddress = () => {
-  const accounts = localStorage.getItem('-CBWSDK:SCWStateManager:accounts');
+  const accounts = localStorage.getItem('-CBWSDK:SCWStateManager:accounts') ?? localStorage.getItem('-walletlink:https://www.walletlink.org:Addresses');
   if (accounts) {
-    const parsedAccounts = JSON.parse(accounts);
-    return parsedAccounts[0]; // Assuming the address you need is the first in the array
+    // Assuming the address you need is the first in the array
+    if (typeof accounts === 'string') {
+      return accounts;
+    } else {
+      const parsedAccounts = JSON.parse(accounts);
+      return parsedAccounts[0];
+    } 
   }
   return null;
 };
@@ -47,7 +52,7 @@ const ThankYouPage = ({ params }: { params: { slug: string } }) => {
 
   const handlePayment = async () => {
     if (accountAddress) {
-      console.log('Wallet connected:', accountAddress)
+      console.log('Wallet connected:', accountAddress);
     } else {
       toast({
         title: 'Wallet not connected',
@@ -63,7 +68,9 @@ const ThankYouPage = ({ params }: { params: { slug: string } }) => {
     try {
       // Initialize the SDK
       const sdk = new NineSdk({
-        baseUrl: 'https://nine-ad9w.onrender.com', 
+        baseUrl: 'https://nine-base.onrender.com', 
+        // baseUrl: 'https://8d20-197-232-251-154.ngrok-free.app'
+        // baseUrl: 'https://smiling-lioness-grateful.ngrok-free.app'
       })
 
       // Create the payment request
