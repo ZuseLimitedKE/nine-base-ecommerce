@@ -68,8 +68,9 @@ const ThankYouPage = ({ params }: { params: { slug: string } }) => {
     try {
       // Initialize the SDK
       const sdk = new NineSdk({
-        // baseUrl: 'https://nine-base.onrender.com', 
-        baseUrl: 'https://8d20-197-232-251-154.ngrok-free.app'
+        baseUrl: 'https://nine-base.onrender.com', 
+        // baseUrl: 'https://8d20-197-232-251-154.ngrok-free.app'
+        // baseUrl: 'https://smiling-lioness-grateful.ngrok-free.app'
       })
 
       // Create the payment request
